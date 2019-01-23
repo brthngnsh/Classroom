@@ -1,9 +1,10 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-int n,Bu[20],Twt,Ttt,A[10],Wt[10],w;
+int n,Bu[20],Twt,Ttt,A[10],Wt[10],w,btime=2,min=0,k=1;
 float Awt,Att;
 char pname[20][20],c[20][20];
+
 
 
 void Getdata()
@@ -87,6 +88,57 @@ void fcfs()
     Gantt_chart();
 }
 
+void sjf()
+{
+ int i,j,temp, temp1;
+    Twt=0;
+    Ttt=0;
+    printf("\n\n SHORTEST JOB FIRST \n\n");
+//SORTING WITH ARRIVAL TIME
+    for(i=1;i<=n;i++)
+    {
+        for(j=i+1;j<=n;j++)
+        {
+            if(A[i]>A[j])
+            {
+                temp=Bu[i];
+                temp1=A[i];
+                Bu[i]=Bu[j];
+                A[i]=A[j];
+                Bu[j]=temp;
+                A[j]=temp1;
+                strcpy(c[i],pname[i]);
+                strcpy(pname[i],pname[j]);
+                strcpy(pname[j],c[i]);
+            }
+        }
+    }
+//SORTING WITH BURST_TIME
+for(i=1;i<n;i++)
+{
+	btime+=Bu[i+1];
+	min=Bu[k];
+	for(j=k;j<n;j++)
+	{
+		if(btime>=A[j] && Bu[i]<min)
+		{
+			strcpy(c[i],pname[i]);
+                	strcpy(pname[i],pname[k]);
+                	strcpy(pname[k],c[i]);
+			temp=A[k];
+			A[k]=A[j];
+			A[j]=temp;
+			temp=Bu[k];
+			Bu[k]=Bu[j];
+			Bu[j]=temp;
+		}
+	}
+	k++;
+}
+	
+	Calculate();
+	Gantt_chart();
+}
 
 void main()
 {
