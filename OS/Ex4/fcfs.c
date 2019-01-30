@@ -1,10 +1,9 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
-int n,Bu[20],Twt,Ttt,A[10],Wt[10],w,btime=2,min=0,k=1;
+int n,Bu[20],Twt,Ttt,A[20],Wt[20],w,btime=2,min=0,k=1,tat[20];
 float Awt,Att;
 char pname[20][20],c[20][20];
-
 
 
 void Getdata()
@@ -51,13 +50,18 @@ void Calculate()
     }
     for(i=1;i<=n;i++)
     {
+	tat[i]=Wt[i]+Bu[i]-A[i];
+    }
+    for(i=1;i<=n;i++)
+    {
         Twt=Twt+(Wt[i]-A[i]);
-        Ttt=Ttt+((Wt[i]+Bu[i])-A[i]);
+        Ttt=Ttt+(Wt[i]+Bu[i]-A[i]);
     }
     Att=(float)Ttt/n;
     Awt=(float)Twt/n;
+    
     printf("\n\n Average Turn around time=%3.2f ms ",Att);
-    printf("\n\n AverageWaiting Time=%3.2f ms",Awt);
+    printf("\n\n Average Waiting Time=%3.2f ms",Awt);
 }
 //FCFS Algorithm
 void fcfs()
@@ -66,6 +70,7 @@ void fcfs()
     Twt=0;
     Ttt=0;
     printf("\n\n FIRST COME FIRST SERVED ALGORITHM\n\n");
+//SORTING WITH ARRIVAL TIME
     for(i=1;i<=n;i++)
     {
         for(j=i+1;j<=n;j++)
@@ -135,9 +140,23 @@ for(i=1;i<n;i++)
 	}
 	k++;
 }
-	
+
 	Calculate();
 	Gantt_chart();
+}
+
+void table()
+{
+printf("Data:\n");
+printf("Process name |  Waiting time  |  Burst time   | TurnAround Time   |\n");
+for( int i = 1;i <= n; i++ )
+{
+	printf( "%s\t\t" ,pname[i]);
+	printf( "%d\t\t" ,Wt[i]-A[i]);
+	printf( "%d\t\t" ,Bu[i]);
+	printf( "%d\t\t" ,tat[i]);
+	printf( "\n" );
+}
 }
 
 void main()
@@ -150,9 +169,11 @@ void main()
     {
 	case 1:
     		fcfs();
+		table();
     		break;
         case 2:
-		printf("in progress");
+		sjf();
+		table();
 		break;
 	case 3:
 		exit(1);
