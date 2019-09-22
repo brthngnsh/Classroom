@@ -34,8 +34,7 @@ public class Register extends javax.swing.JFrame {
                  Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/ssn","root","");
         JOptionPane.showMessageDialog(this,"db connected");
             } catch (ClassNotFoundException |SQLException ex) {
-                System.out.println(ex);
-                
+                System.out.println(ex);   
             }
        
       
@@ -244,6 +243,9 @@ public class Register extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
             }
+            this.dispose();
+            Login lt = new Login();
+            lt.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
