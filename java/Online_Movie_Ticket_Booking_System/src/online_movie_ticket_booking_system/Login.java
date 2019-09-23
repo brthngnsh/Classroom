@@ -23,6 +23,7 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    static Book_ticket bt = new Book_ticket();
     static account global_ac = new account();
     public Login() {
         initComponents();
@@ -208,7 +209,7 @@ public class Login extends javax.swing.JFrame {
                     }
                     
                     this.dispose();
-                    Book_ticket bt = new Book_ticket();
+                    
                     bt.setVisible(true);
                     global_ac = ac;
                 }

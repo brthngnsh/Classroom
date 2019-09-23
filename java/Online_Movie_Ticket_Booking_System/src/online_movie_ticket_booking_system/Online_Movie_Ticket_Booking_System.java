@@ -16,6 +16,8 @@ public class Online_Movie_Ticket_Booking_System {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        //Directly run Menu.java
+        //Running full project feat. will be available in one of the future updates
     }
     
 }
