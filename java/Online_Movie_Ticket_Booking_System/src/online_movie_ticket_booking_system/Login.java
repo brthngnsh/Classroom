@@ -23,7 +23,6 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    static Book_ticket bt = new Book_ticket();
     static account global_ac = new account();
     public Login() {
         initComponents();
@@ -125,7 +124,7 @@ public class Login extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(email)
                                 .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE)))))
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +141,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton1))
@@ -168,7 +167,7 @@ public class Login extends javax.swing.JFrame {
     }
     
             try {
-               
+                
                 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/ssn","root","");
                 Statement stmt = con.createStatement();
                 String emailstored ;
@@ -195,7 +194,8 @@ public class Login extends javax.swing.JFrame {
                         ac.Email = rs.getString("email");
                         ac.Name = rs.getString("name");
                         ac.Gender = rs.getString("gender");
-                        ac.id = Integer.parseInt(rs.getString("id"));                     
+                        ac.id = Integer.parseInt(rs.getString("id"));
+                        ac.wallet_amt = Float.parseFloat(rs.getString("wallet_amt"));
                     
                     }
                     
@@ -210,7 +210,8 @@ public class Login extends javax.swing.JFrame {
                     
                     this.dispose();
                     
-                    bt.setVisible(true);
+                    Display dp = new Display();
+                    dp.setVisible(true);
                     global_ac = ac;
                 }
                 else{

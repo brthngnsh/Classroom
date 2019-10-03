@@ -222,7 +222,7 @@ public class Register extends javax.swing.JFrame {
             gen="o";
         }
         
-        String sql  = "insert into customer(name ,password,email,gender) values(?,?,?,?)";
+        String sql  = "insert into customer(name ,password,email,gender,wallet_amt) values(?,?,?,?,?)";
             try {
                
                 Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/ssn","root","");
@@ -232,6 +232,7 @@ public class Register extends javax.swing.JFrame {
                 ps.setString(2, password.getText());
                 ps.setString(3, email.getText());
                 ps.setString(4,gen);
+                ps.setString(5, String.valueOf(0.00));
                 if(password2.getText() == null ? password.getText() != null : !password2.getText().equals(password.getText())){
                     JOptionPane.showMessageDialog(this, "Passwords do not match");
                 }

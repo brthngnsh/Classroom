@@ -13,7 +13,11 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
+import javax.swing.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 /**
  *
  * @author taskmaster
@@ -45,6 +49,7 @@ public class RecordUpdate extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFileChooser1 = new javax.swing.JFileChooser();
         jLabel1 = new javax.swing.JLabel();
         mi = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -53,11 +58,11 @@ public class RecordUpdate extends javax.swing.JFrame {
         ti = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         tn = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        tm = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,8 +73,6 @@ public class RecordUpdate extends javax.swing.JFrame {
         jLabel3.setText("Theatre Id");
 
         jLabel4.setText("Theatre name");
-
-        jLabel5.setText("Time");
 
         jButton1.setText("Insert");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +90,14 @@ public class RecordUpdate extends javax.swing.JFrame {
 
         jButton3.setText("Update");
 
-        tm.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "04:30:00", "13:00:00", "16:00:00", "20:00:00" }));
+        jLabel6.setText("Choose image");
+
+        jButton4.setText("Browse image");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,25 +108,30 @@ public class RecordUpdate extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
-                        .addGap(51, 51, 51)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                         .addComponent(jButton2)
-                        .addGap(50, 50, 50)
-                        .addComponent(jButton3))
+                        .addGap(67, 67, 67)
+                        .addComponent(jButton3)
+                        .addGap(126, 126, 126))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel5))
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(103, 103, 103)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(mi)
-                            .addComponent(mn)
-                            .addComponent(ti)
-                            .addComponent(tn)
-                            .addComponent(tm, 0, 104, Short.MAX_VALUE))))
-                .addContainerGap(125, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(mi)
+                                    .addComponent(mn)
+                                    .addComponent(ti)
+                                    .addComponent(tn))
+                                .addGap(82, 82, 82))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,16 +155,16 @@ public class RecordUpdate extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(tn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(tm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
+                    .addComponent(jLabel6)
+                    .addComponent(jButton4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(jButton3)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(82, Short.MAX_VALUE))
+                    .addComponent(jButton1))
+                .addGap(66, 66, 66))
         );
 
         pack();
@@ -168,11 +183,9 @@ public class RecordUpdate extends javax.swing.JFrame {
                 moviename = (String)mn.getText();
                 String theatreid = (String)ti.getText();
                 String theatrename = tn.getText();
-                String time = (String) tm.getSelectedItem();
                 String SQL1 = "insert into movie values("+movieid+",'"+moviename+"')";
                 String SQL2 = "insert into theatre values("+theatreid+",'"+theatrename+"')";
-                String SQL3 = "insert into movie1 values("+movieid+","+theatreid+",'"+time+"')";
-                stmt.executeUpdate("SET GLOBAL time_zone = '+5:30'");
+                String SQL3 = "insert into movie1 values("+movieid+","+theatreid+")";
                 stmt.executeUpdate(SQL1);
                 stmt.executeUpdate(SQL2);
                 stmt.executeUpdate(SQL3);
@@ -196,8 +209,7 @@ public class RecordUpdate extends javax.swing.JFrame {
             moviename = (String)mn.getText();
             String theatreid = (String)ti.getText();
             String theatrename = tn.getText();
-            String time = (String) tm.getSelectedItem();
-            stmt.executeUpdate("DELETE FROM movie1 where movie_id="+movieid+" and theatre_id="+theatreid+" and time='"+time+"'");
+            stmt.executeUpdate("DELETE FROM movie1 where movie_id="+movieid+" and theatre_id="+theatreid);
             stmt.executeUpdate("DELETE FROM movie where movie_id="+movieid+" and movie_name='"+moviename+"'");
             stmt.executeUpdate("DELETE FROM theatre where theatre_id="+theatreid+" and theatre_name='"+theatrename+"'");
             JOptionPane.showMessageDialog(this,"Deleted");
@@ -207,6 +219,22 @@ public class RecordUpdate extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        jFileChooser1.showDialog(null,"Choose the image for the movie");
+        jFileChooser1.setVisible(true);
+        File file1 = jFileChooser1.getSelectedFile();
+        String name = file1.getName();
+        String DestPath = System.getProperty("user.dir")+"/src/online_movie_ticket_booking_system/images/"+name;
+        File dest = new File(DestPath);
+        try {
+            Files.copy(file1.toPath(),dest.toPath(),StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+            Logger.getLogger(RecordUpdate.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,15 +275,16 @@ public class RecordUpdate extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField mi;
     private javax.swing.JTextField mn;
     private javax.swing.JTextField ti;
-    private javax.swing.JComboBox<String> tm;
     private javax.swing.JTextField tn;
     // End of variables declaration//GEN-END:variables
 }

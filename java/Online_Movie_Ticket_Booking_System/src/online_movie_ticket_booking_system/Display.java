@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package online_movie_ticket_booking_system;
+import java.awt.Image;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -25,6 +27,14 @@ public class Display extends javax.swing.JFrame {
      * Creates new form Display
      * @throws java.sql.SQLException
      */
+    static Book_ticket bt;
+    static public variable_class vc = new variable_class();
+    static int ImagePointer = 0;
+    static String DestPath = System.getProperty("user.dir")+"\\src\\online_movie_ticket_booking_system\\images";
+    static String detpat = "/online_movie_ticket_booking_system/images/";
+    static File folder = new File(DestPath);
+    static File[] listOfFiles = folder.listFiles();
+    static List<String> results = new ArrayList<String>();
     public Display() throws SQLException {
         initComponents();
         ArrayList<String> list = new ArrayList<>(); 
@@ -32,7 +42,6 @@ public class Display extends javax.swing.JFrame {
        try {
                  Class.forName("com.mysql.cj.jdbc.Driver");
                  Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/ssn","root","");
-                 JOptionPane.showMessageDialog(this,"Obtained movie list from database");
             } catch (ClassNotFoundException |SQLException ex) {
                 System.out.println(ex);   
             } 
@@ -42,27 +51,11 @@ public class Display extends javax.swing.JFrame {
        String SQL = "select * from movie";
        
        ResultSet rs = stmt.executeQuery(SQL);
+       for(File F : listOfFiles){results.add(F.getName());}
        
-       ResultSetMetaData rsmd = rs.getMetaData();
        
-       int ColumnNumber = rsmd.getColumnCount();
-       while(rs.next()){
-           list.add(rs.getString(2));
-       }
-       Iterator<String> Itr = list.iterator();
-       int count = 0;
-      // if(Itr.hasNext()){
-      // ImageIcon img1 = new ImageIcon(((String)Itr.next())+".jpeg");
-      // jLabel1.setIcon(img1);}
-      // if(Itr.hasNext()){
-      // ImageIcon img2 = new ImageIcon(((String)Itr.next())+".jpeg");
-      // jLabel2.setIcon(img2);}
-      //  if(Itr.hasNext()){
-      // ImageIcon img3 = new ImageIcon(((String)Itr.next())+".jpeg");
-      // jLabel2.setIcon(img3);} 
-      //  if(Itr.hasNext()){
-      // ImageIcon img4 = new ImageIcon(((String)Itr.next())+".jpeg");
-      // jLabel2.setIcon(img4);}
+       ImageIcon img = new ImageIcon(new ImageIcon("/online_movie_ticket_booking_system/images/gemini_man.jpeg").getImage().getScaledInstance(20,20,Image.SCALE_DEFAULT));
+       jLabel5.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource(detpat+results.get(ImagePointer))).getImage().getScaledInstance(361, 378, Image.SCALE_SMOOTH)));
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,51 +66,108 @@ public class Display extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/online_movie_ticket_booking_system/shazam.jpeg"))); // NOI18N
-        jLabel1.setText("jLabel1");
+        jButton1.setText("PREVIOUS");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jLabel2.setText("jLabel2");
+        jButton2.setText("NEXT");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jLabel3.setText("jLabel3");
-
-        jLabel4.setText("jLabel4");
+        jButton3.setText("BOOK TICKET");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(56, 56, 56)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(240, 240, 240)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(190, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(jButton2))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if (ImagePointer < ((results.size())-1)){
+            ImagePointer+=1;
+            jLabel5.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource(detpat+results.get(ImagePointer))).getImage().getScaledInstance(361, 378, Image.SCALE_SMOOTH)));
+
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (ImagePointer > 0){
+            ImagePointer-=1;
+            jLabel5.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource(detpat+results.get(ImagePointer))).getImage().getScaledInstance(361, 378, Image.SCALE_SMOOTH)));
+            
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        this.setVisible(false);
+        
+        String moviename = results.get(ImagePointer);
+        int iend = moviename.indexOf(".");
+        String subString = "";
+if (iend != -1) 
+{
+    subString= moviename.substring(0 , iend); //this will give abc in abc.def.ghi
+}
+        bt = new Book_ticket(subString);
+        bt.setVisible(true);
+        bt.jTextField1.setText(subString);
+        vc.movie = subString;
+
+    }//GEN-LAST:event_jButton3ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -159,10 +209,10 @@ public class Display extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    public javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 
 }

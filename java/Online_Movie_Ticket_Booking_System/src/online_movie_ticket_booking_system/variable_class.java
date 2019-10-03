@@ -9,12 +9,6 @@ package online_movie_ticket_booking_system;
  *
  * @author taskmaster
  */
-public class account {
-    String Email;
-    int Type;
-    String Name;
-    String Gender;
-    int id;
-    Float wallet_amt;
-        
+public class variable_class {
+    String movie;
 }

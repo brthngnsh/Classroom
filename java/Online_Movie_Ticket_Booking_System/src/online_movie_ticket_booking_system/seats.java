@@ -5,17 +5,141 @@
  */
 package online_movie_ticket_booking_system;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import static online_movie_ticket_booking_system.Display.bt;
+
 /**
  *
  * @author taskmaster2502
  */
 public class seats extends javax.swing.JFrame {
 
+    float bill;
+    String selected;
+
     /**
      * Creates new form seats
      */
-    public seats() {
+    //following variables are obtained from Book Ticket bt class
+    
+    public seats(String M,String Th,String Ti,String D) throws ClassNotFoundException, SQLException {
         initComponents();
+        Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/ssn","root","");
+        Statement stmt = con.createStatement();
+        JOptionPane.showMessageDialog(this,M);
+        JOptionPane.showMessageDialog(this,Th);
+        JOptionPane.showMessageDialog(this,Ti);
+        JOptionPane.showMessageDialog(this,D);
+        String sql = "select * from booking where movie_id="+M+" and theatre_id="+Th+" and time='"+Ti+"' and date_of_booking='"+D+"'";
+        ResultSet rs = stmt.executeQuery(sql);
+        String seate;
+        String[] seating = null;
+        int j = 0;
+        List<String> Seat = new ArrayList<String>();
+        while(rs.next()){
+            seate=rs.getString("seats");
+            seating = seate.split(",");
+        int i = 0;
+        for(i=0;i<seating.length;i++){
+            Seat.add(seating[i]);
+        }
+        }
+        for(j=0;j<Seat.size();j++){
+        if(Objects.equals(Seat.get(j), "a1"))
+        {
+            a1.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "a2"))
+        {
+            a2.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "a3"))
+        {
+            a3.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "a4"))
+        {
+            a4.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "b1"))
+        {
+            b1.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "b2"))
+        {
+            b2.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "b3"))
+        {
+            b3.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "b4"))
+        {
+           b4.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "c1"))
+        {
+            c1.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "c2"))
+        {
+            c2.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "c3"))
+        {
+            c3.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "c4"))
+        {
+            c4.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "d1"))
+        {
+            d1.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "d2"))
+        {
+            d2.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "d3"))
+        {
+           d3.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "d4"))
+        {
+            d4.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "e1"))
+        {
+            e1.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "e2"))
+        {
+            e2.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "e3"))
+        {
+            e3.setEnabled(false);
+        }
+        if(Objects.equals(Seat.get(j), "e4"))
+        {
+            e4.setEnabled(false);
+        }
+                  
+        }
+        
+        
     }
 
     /**
@@ -28,853 +152,329 @@ public class seats extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        checkbox1 = new java.awt.Checkbox();
-        checkbox2 = new java.awt.Checkbox();
-        checkbox3 = new java.awt.Checkbox();
-        checkbox4 = new java.awt.Checkbox();
-        checkbox5 = new java.awt.Checkbox();
-        checkbox6 = new java.awt.Checkbox();
-        checkbox7 = new java.awt.Checkbox();
-        checkbox8 = new java.awt.Checkbox();
-        checkbox9 = new java.awt.Checkbox();
-        checkbox10 = new java.awt.Checkbox();
-        checkbox11 = new java.awt.Checkbox();
-        checkbox12 = new java.awt.Checkbox();
-        checkbox13 = new java.awt.Checkbox();
-        checkbox14 = new java.awt.Checkbox();
-        checkbox15 = new java.awt.Checkbox();
-        checkbox16 = new java.awt.Checkbox();
-        checkbox17 = new java.awt.Checkbox();
-        checkbox18 = new java.awt.Checkbox();
-        checkbox19 = new java.awt.Checkbox();
-        checkbox20 = new java.awt.Checkbox();
-        checkbox21 = new java.awt.Checkbox();
-        checkbox22 = new java.awt.Checkbox();
-        checkbox23 = new java.awt.Checkbox();
-        checkbox24 = new java.awt.Checkbox();
-        checkbox25 = new java.awt.Checkbox();
-        checkbox26 = new java.awt.Checkbox();
-        checkbox27 = new java.awt.Checkbox();
-        checkbox28 = new java.awt.Checkbox();
-        checkbox29 = new java.awt.Checkbox();
-        checkbox30 = new java.awt.Checkbox();
-        checkbox31 = new java.awt.Checkbox();
-        checkbox32 = new java.awt.Checkbox();
-        checkbox33 = new java.awt.Checkbox();
-        checkbox34 = new java.awt.Checkbox();
-        checkbox35 = new java.awt.Checkbox();
-        checkbox36 = new java.awt.Checkbox();
-        checkbox37 = new java.awt.Checkbox();
-        checkbox38 = new java.awt.Checkbox();
-        checkbox39 = new java.awt.Checkbox();
-        checkbox40 = new java.awt.Checkbox();
-        checkbox41 = new java.awt.Checkbox();
-        checkbox42 = new java.awt.Checkbox();
-        checkbox43 = new java.awt.Checkbox();
-        checkbox44 = new java.awt.Checkbox();
-        checkbox45 = new java.awt.Checkbox();
-        checkbox46 = new java.awt.Checkbox();
-        checkbox47 = new java.awt.Checkbox();
-        checkbox48 = new java.awt.Checkbox();
-        checkbox49 = new java.awt.Checkbox();
-        checkbox50 = new java.awt.Checkbox();
-        checkbox51 = new java.awt.Checkbox();
-        checkbox52 = new java.awt.Checkbox();
-        checkbox53 = new java.awt.Checkbox();
-        checkbox54 = new java.awt.Checkbox();
-        checkbox55 = new java.awt.Checkbox();
-        checkbox56 = new java.awt.Checkbox();
-        checkbox57 = new java.awt.Checkbox();
-        checkbox58 = new java.awt.Checkbox();
-        checkbox59 = new java.awt.Checkbox();
-        checkbox60 = new java.awt.Checkbox();
-        checkbox61 = new java.awt.Checkbox();
-        checkbox62 = new java.awt.Checkbox();
-        checkbox63 = new java.awt.Checkbox();
-        checkbox64 = new java.awt.Checkbox();
-        checkbox65 = new java.awt.Checkbox();
-        checkbox66 = new java.awt.Checkbox();
-        checkbox67 = new java.awt.Checkbox();
-        checkbox68 = new java.awt.Checkbox();
-        checkbox69 = new java.awt.Checkbox();
-        checkbox70 = new java.awt.Checkbox();
-        checkbox71 = new java.awt.Checkbox();
-        checkbox72 = new java.awt.Checkbox();
-        checkbox73 = new java.awt.Checkbox();
-        checkbox74 = new java.awt.Checkbox();
-        checkbox75 = new java.awt.Checkbox();
-        checkbox76 = new java.awt.Checkbox();
-        checkbox77 = new java.awt.Checkbox();
-        checkbox78 = new java.awt.Checkbox();
-        checkbox79 = new java.awt.Checkbox();
-        checkbox80 = new java.awt.Checkbox();
-        checkbox81 = new java.awt.Checkbox();
-        checkbox82 = new java.awt.Checkbox();
-        checkbox83 = new java.awt.Checkbox();
-        checkbox84 = new java.awt.Checkbox();
-        checkbox85 = new java.awt.Checkbox();
-        checkbox86 = new java.awt.Checkbox();
-        checkbox87 = new java.awt.Checkbox();
-        checkbox88 = new java.awt.Checkbox();
-        checkbox89 = new java.awt.Checkbox();
-        checkbox90 = new java.awt.Checkbox();
-        checkbox91 = new java.awt.Checkbox();
-        checkbox92 = new java.awt.Checkbox();
-        checkbox93 = new java.awt.Checkbox();
-        checkbox94 = new java.awt.Checkbox();
-        checkbox95 = new java.awt.Checkbox();
-        checkbox96 = new java.awt.Checkbox();
-        checkbox97 = new java.awt.Checkbox();
-        checkbox98 = new java.awt.Checkbox();
-        checkbox99 = new java.awt.Checkbox();
-        checkbox100 = new java.awt.Checkbox();
-        checkbox101 = new java.awt.Checkbox();
-        checkbox102 = new java.awt.Checkbox();
-        checkbox103 = new java.awt.Checkbox();
-        checkbox104 = new java.awt.Checkbox();
-        checkbox105 = new java.awt.Checkbox();
-        checkbox106 = new java.awt.Checkbox();
-        checkbox107 = new java.awt.Checkbox();
-        checkbox108 = new java.awt.Checkbox();
-        checkbox109 = new java.awt.Checkbox();
-        checkbox110 = new java.awt.Checkbox();
-        checkbox111 = new java.awt.Checkbox();
-        checkbox112 = new java.awt.Checkbox();
-        checkbox113 = new java.awt.Checkbox();
-        checkbox114 = new java.awt.Checkbox();
-        checkbox115 = new java.awt.Checkbox();
-        checkbox116 = new java.awt.Checkbox();
-        checkbox117 = new java.awt.Checkbox();
-        checkbox118 = new java.awt.Checkbox();
-        checkbox119 = new java.awt.Checkbox();
-        checkbox120 = new java.awt.Checkbox();
-        checkbox121 = new java.awt.Checkbox();
-        checkbox122 = new java.awt.Checkbox();
-        checkbox123 = new java.awt.Checkbox();
-        checkbox124 = new java.awt.Checkbox();
-        checkbox125 = new java.awt.Checkbox();
-        checkbox126 = new java.awt.Checkbox();
-        checkbox127 = new java.awt.Checkbox();
-        checkbox128 = new java.awt.Checkbox();
-        checkbox129 = new java.awt.Checkbox();
-        checkbox130 = new java.awt.Checkbox();
+        a1 = new javax.swing.JToggleButton();
+        a2 = new javax.swing.JToggleButton();
+        a3 = new javax.swing.JToggleButton();
+        a4 = new javax.swing.JToggleButton();
+        b1 = new javax.swing.JToggleButton();
+        b2 = new javax.swing.JToggleButton();
+        b3 = new javax.swing.JToggleButton();
+        b4 = new javax.swing.JToggleButton();
+        c1 = new javax.swing.JToggleButton();
+        c2 = new javax.swing.JToggleButton();
+        c3 = new javax.swing.JToggleButton();
+        c4 = new javax.swing.JToggleButton();
+        d1 = new javax.swing.JToggleButton();
+        d2 = new javax.swing.JToggleButton();
+        d3 = new javax.swing.JToggleButton();
+        d4 = new javax.swing.JToggleButton();
+        e1 = new javax.swing.JToggleButton();
+        e2 = new javax.swing.JToggleButton();
+        e3 = new javax.swing.JToggleButton();
+        e4 = new javax.swing.JToggleButton();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("                                                                                     Screen is here");
         jLabel1.setAlignmentX(0.5F);
 
-        checkbox1.setLabel("A1");
+        a1.setText("A1");
 
-        checkbox2.setLabel("A2");
+        a2.setText("A2");
+        a2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                a2ActionPerformed(evt);
+            }
+        });
 
-        checkbox3.setLabel("A3");
+        a3.setText("A3");
 
-        checkbox4.setLabel("A4");
+        a4.setText("A4");
+        a4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                a4ActionPerformed(evt);
+            }
+        });
 
-        checkbox5.setLabel("A5");
+        b1.setText("B1");
+        b1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b1ActionPerformed(evt);
+            }
+        });
 
-        checkbox6.setLabel("A6");
+        b2.setText("B5");
 
-        checkbox7.setLabel("A7");
+        b3.setText("B3");
 
-        checkbox8.setLabel("A8");
+        b4.setText("B4");
 
-        checkbox9.setLabel("A9");
+        c1.setText("C1");
 
-        checkbox10.setLabel("A10");
+        c2.setText("C2");
 
-        checkbox11.setLabel("A7");
+        c3.setText("C3");
 
-        checkbox12.setLabel("A8");
+        c4.setText("C4");
 
-        checkbox13.setLabel("A9");
+        d1.setText("D1");
 
-        checkbox14.setLabel("A10");
+        d2.setText("D2");
 
-        checkbox15.setLabel("A1");
+        d3.setText("D3");
 
-        checkbox16.setLabel("A2");
+        d4.setText("D4");
 
-        checkbox17.setLabel("A3");
+        e1.setText("E1");
 
-        checkbox18.setLabel("A4");
+        e2.setText("E2");
 
-        checkbox19.setLabel("A5");
+        e3.setText("E3");
 
-        checkbox20.setLabel("A6");
+        e4.setText("E4");
 
-        checkbox21.setLabel("A7");
+        jLabel2.setText("                                                 Screen Here");
 
-        checkbox22.setLabel("A8");
-
-        checkbox23.setLabel("A9");
-
-        checkbox24.setLabel("A10");
-
-        checkbox25.setLabel("A1");
-
-        checkbox26.setLabel("A2");
-
-        checkbox27.setLabel("A3");
-
-        checkbox28.setLabel("A4");
-
-        checkbox29.setLabel("A5");
-
-        checkbox30.setLabel("A6");
-
-        checkbox31.setLabel("A7");
-
-        checkbox32.setLabel("A8");
-
-        checkbox33.setLabel("A9");
-
-        checkbox34.setLabel("A10");
-
-        checkbox35.setLabel("A1");
-
-        checkbox36.setLabel("A2");
-
-        checkbox37.setLabel("A3");
-
-        checkbox38.setLabel("A4");
-
-        checkbox39.setLabel("A5");
-
-        checkbox40.setLabel("A6");
-
-        checkbox41.setLabel("A7");
-
-        checkbox42.setLabel("A8");
-
-        checkbox43.setLabel("A9");
-
-        checkbox44.setLabel("A10");
-
-        checkbox45.setLabel("A1");
-
-        checkbox46.setLabel("A2");
-
-        checkbox47.setLabel("A3");
-
-        checkbox48.setLabel("A4");
-
-        checkbox49.setLabel("A5");
-
-        checkbox50.setLabel("A6");
-
-        checkbox51.setLabel("A7");
-
-        checkbox52.setLabel("A8");
-
-        checkbox53.setLabel("A9");
-
-        checkbox54.setLabel("A10");
-
-        checkbox55.setLabel("A1");
-
-        checkbox56.setLabel("A2");
-
-        checkbox57.setLabel("A3");
-
-        checkbox58.setLabel("A4");
-
-        checkbox59.setLabel("A5");
-
-        checkbox60.setLabel("A6");
-
-        checkbox61.setLabel("A7");
-
-        checkbox62.setLabel("A8");
-
-        checkbox63.setLabel("A9");
-
-        checkbox64.setLabel("A10");
-
-        checkbox65.setLabel("A1");
-
-        checkbox66.setLabel("A2");
-
-        checkbox67.setLabel("A3");
-
-        checkbox68.setLabel("A4");
-
-        checkbox69.setLabel("A5");
-
-        checkbox70.setLabel("A6");
-
-        checkbox71.setLabel("A7");
-
-        checkbox72.setLabel("A8");
-
-        checkbox73.setLabel("A9");
-
-        checkbox74.setLabel("A10");
-
-        checkbox75.setLabel("A1");
-
-        checkbox76.setLabel("A2");
-
-        checkbox77.setLabel("A3");
-
-        checkbox78.setLabel("A4");
-
-        checkbox79.setLabel("A5");
-
-        checkbox80.setLabel("A6");
-
-        checkbox81.setLabel("A7");
-
-        checkbox82.setLabel("A8");
-
-        checkbox83.setLabel("A9");
-
-        checkbox84.setLabel("A10");
-
-        checkbox85.setLabel("A1");
-
-        checkbox86.setLabel("A2");
-
-        checkbox87.setLabel("A3");
-
-        checkbox88.setLabel("A4");
-
-        checkbox89.setLabel("A5");
-
-        checkbox90.setLabel("A6");
-
-        checkbox91.setLabel("A7");
-
-        checkbox92.setLabel("A8");
-
-        checkbox93.setLabel("A9");
-
-        checkbox94.setLabel("A10");
-
-        checkbox95.setLabel("A1");
-
-        checkbox96.setLabel("A2");
-
-        checkbox97.setLabel("A3");
-
-        checkbox98.setLabel("A4");
-
-        checkbox99.setLabel("A5");
-
-        checkbox100.setLabel("A6");
-
-        checkbox101.setLabel("A7");
-
-        checkbox102.setLabel("A8");
-
-        checkbox103.setLabel("A9");
-
-        checkbox104.setLabel("A10");
-
-        checkbox105.setLabel("A1");
-
-        checkbox106.setLabel("A2");
-
-        checkbox107.setLabel("A3");
-
-        checkbox108.setLabel("A4");
-
-        checkbox109.setLabel("A5");
-
-        checkbox110.setLabel("A6");
-
-        checkbox111.setLabel("A7");
-
-        checkbox112.setLabel("A8");
-
-        checkbox113.setLabel("A9");
-
-        checkbox114.setLabel("A10");
-
-        checkbox115.setLabel("A1");
-
-        checkbox116.setLabel("A2");
-
-        checkbox117.setLabel("A3");
-
-        checkbox118.setLabel("A4");
-
-        checkbox119.setLabel("A5");
-
-        checkbox120.setLabel("A6");
-
-        checkbox121.setLabel("A7");
-
-        checkbox122.setLabel("A8");
-
-        checkbox123.setLabel("A9");
-
-        checkbox124.setLabel("A10");
-
-        checkbox125.setLabel("A1");
-
-        checkbox126.setLabel("A2");
-
-        checkbox127.setLabel("A3");
-
-        checkbox128.setLabel("A4");
-
-        checkbox129.setLabel("A5");
-
-        checkbox130.setLabel("A6");
+        jButton1.setText("Book Selected seats");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 489, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
+                        .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(checkbox125, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(19, 19, 19)
-                                    .addComponent(checkbox126, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(23, 23, 23)
-                                    .addComponent(checkbox127, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(35, 35, 35)
-                                    .addComponent(checkbox128, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(26, 26, 26)
-                                    .addComponent(checkbox129, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(22, 22, 22)
-                                    .addComponent(checkbox130, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(27, 27, 27)
-                                    .addComponent(checkbox121, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(28, 28, 28)
-                                    .addComponent(checkbox122, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(33, 33, 33)
-                                    .addComponent(checkbox123, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(27, 27, 27)
-                                    .addComponent(checkbox124, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(e1, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                                    .addComponent(d1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(c1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(b1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(a1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(53, 53, 53)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(checkbox105, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(19, 19, 19)
-                                        .addComponent(checkbox106, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(23, 23, 23)
-                                        .addComponent(checkbox107, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(35, 35, 35)
-                                        .addComponent(checkbox108, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(checkbox109, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(22, 22, 22)
-                                        .addComponent(checkbox110, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(checkbox101, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(checkbox102, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(33, 33, 33)
-                                        .addComponent(checkbox103, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(checkbox104, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(checkbox115, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(19, 19, 19)
-                                        .addComponent(checkbox116, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(23, 23, 23)
-                                        .addComponent(checkbox117, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(35, 35, 35)
-                                        .addComponent(checkbox118, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(checkbox119, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(22, 22, 22)
-                                        .addComponent(checkbox120, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(checkbox111, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(checkbox112, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(33, 33, 33)
-                                        .addComponent(checkbox113, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(checkbox114, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(checkbox65, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(19, 19, 19)
-                                    .addComponent(checkbox66, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(23, 23, 23)
-                                    .addComponent(checkbox67, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(35, 35, 35)
-                                    .addComponent(checkbox68, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(26, 26, 26)
-                                    .addComponent(checkbox69, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(22, 22, 22)
-                                    .addComponent(checkbox70, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(27, 27, 27)
-                                    .addComponent(checkbox61, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(28, 28, 28)
-                                    .addComponent(checkbox62, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(33, 33, 33)
-                                    .addComponent(checkbox63, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(27, 27, 27)
-                                    .addComponent(checkbox64, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(checkbox15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(19, 19, 19)
-                                        .addComponent(checkbox16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(23, 23, 23)
-                                        .addComponent(checkbox17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(35, 35, 35)
-                                        .addComponent(checkbox18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(checkbox19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(22, 22, 22)
-                                        .addComponent(checkbox20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(checkbox11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(checkbox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(33, 33, 33)
-                                        .addComponent(checkbox13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(checkbox14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(checkbox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(19, 19, 19)
-                                        .addComponent(checkbox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(23, 23, 23)
-                                        .addComponent(checkbox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(35, 35, 35)
-                                        .addComponent(checkbox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(checkbox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(22, 22, 22)
-                                        .addComponent(checkbox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(checkbox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(checkbox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(33, 33, 33)
-                                        .addComponent(checkbox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(checkbox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(checkbox25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(19, 19, 19)
-                                                .addComponent(checkbox26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(23, 23, 23)
-                                                .addComponent(checkbox27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(checkbox45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(19, 19, 19)
-                                                .addComponent(checkbox46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(23, 23, 23)
-                                                .addComponent(checkbox47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(checkbox35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(19, 19, 19)
-                                                .addComponent(checkbox36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(23, 23, 23)
-                                                .addComponent(checkbox37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(35, 35, 35)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(checkbox48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(26, 26, 26)
-                                                .addComponent(checkbox49, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(22, 22, 22)
-                                                .addComponent(checkbox50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(27, 27, 27)
-                                                .addComponent(checkbox41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(28, 28, 28)
-                                                .addComponent(checkbox42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(33, 33, 33)
-                                                .addComponent(checkbox43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(27, 27, 27)
-                                                .addComponent(checkbox44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(checkbox38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(checkbox39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(checkbox28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGap(26, 26, 26)
-                                                        .addComponent(checkbox29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addGap(22, 22, 22)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(checkbox30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(checkbox40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(27, 27, 27)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(checkbox21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(checkbox31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(28, 28, 28)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(checkbox22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(checkbox32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(33, 33, 33)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(checkbox23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(checkbox33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(27, 27, 27)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(checkbox34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(checkbox24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(checkbox55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(19, 19, 19)
-                                        .addComponent(checkbox56, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(23, 23, 23)
-                                        .addComponent(checkbox57, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(35, 35, 35)
-                                        .addComponent(checkbox58, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(checkbox59, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(22, 22, 22)
-                                        .addComponent(checkbox60, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(checkbox51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(checkbox52, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(33, 33, 33)
-                                        .addComponent(checkbox53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(checkbox54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(checkbox95, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(19, 19, 19)
-                                    .addComponent(checkbox96, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(23, 23, 23)
-                                    .addComponent(checkbox97, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(35, 35, 35)
-                                    .addComponent(checkbox98, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(26, 26, 26)
-                                    .addComponent(checkbox99, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(22, 22, 22)
-                                    .addComponent(checkbox100, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(27, 27, 27)
-                                    .addComponent(checkbox91, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(28, 28, 28)
-                                    .addComponent(checkbox92, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(33, 33, 33)
-                                    .addComponent(checkbox93, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(27, 27, 27)
-                                    .addComponent(checkbox94, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(checkbox75, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(19, 19, 19)
-                                        .addComponent(checkbox76, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(23, 23, 23)
-                                        .addComponent(checkbox77, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(35, 35, 35)
-                                        .addComponent(checkbox78, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(checkbox79, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(22, 22, 22)
-                                        .addComponent(checkbox80, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(checkbox71, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(checkbox72, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(33, 33, 33)
-                                        .addComponent(checkbox73, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(checkbox74, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(checkbox85, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(19, 19, 19)
-                                        .addComponent(checkbox86, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(23, 23, 23)
-                                        .addComponent(checkbox87, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(35, 35, 35)
-                                        .addComponent(checkbox88, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(checkbox89, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(22, 22, 22)
-                                        .addComponent(checkbox90, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(checkbox81, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(28, 28, 28)
-                                        .addComponent(checkbox82, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(33, 33, 33)
-                                        .addComponent(checkbox83, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(checkbox84, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                .addContainerGap(104, Short.MAX_VALUE))
+                                    .addComponent(b2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(a2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(c2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(d2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(e2, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(107, 107, 107)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(e3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(d3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(a3, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(b3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(c3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(39, 39, 39)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(b4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(d4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                                            .addComponent(c4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(e4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(a4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 443, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkbox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addGap(13, 13, 13)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(a1)
+                    .addComponent(a2)
+                    .addComponent(a3)
+                    .addComponent(a4))
+                .addGap(37, 37, 37)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(b1)
+                    .addComponent(b2)
+                    .addComponent(b3)
+                    .addComponent(b4))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(c1)
+                    .addComponent(c2)
+                    .addComponent(c3)
+                    .addComponent(c4))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(d1)
+                    .addComponent(d2)
+                    .addComponent(d3)
+                    .addComponent(d4))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(e1)
+                    .addComponent(e2)
+                    .addComponent(e3)
+                    .addComponent(e4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkbox15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkbox25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkbox35, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox36, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox37, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox38, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox39, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox40, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox34, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkbox45, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox46, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox47, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox49, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox41, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox42, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox43, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkbox55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox56, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox57, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox59, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox60, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox52, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox58, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkbox65, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox66, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox67, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox69, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox70, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox61, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox62, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox63, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox64, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox68, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkbox75, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox76, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox77, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox79, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox80, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox71, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox72, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox73, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox74, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox78, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkbox85, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox86, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox87, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox89, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox90, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox81, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox82, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox83, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox84, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox88, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkbox95, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox96, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox97, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox99, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox100, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox91, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox92, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox93, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox94, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox98, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkbox105, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox106, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox107, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox109, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox110, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox101, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox102, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox103, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox104, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox108, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkbox115, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox116, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox117, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox119, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox120, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox111, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox112, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox113, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox114, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox118, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkbox125, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox126, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox127, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox129, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox130, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox121, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox122, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox123, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox124, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkbox128, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(29, 29, 29))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_b1ActionPerformed
+
+    private void a2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_a2ActionPerformed
+
+    private void a4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_a4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_a4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        selected = null;
+        bill = 0;
+        if(a1.isSelected()){
+            if(selected!=null)
+                selected+=",a1";
+            else
+                selected="a1";
+            bill+=250;}
+        if(a2.isSelected()){
+            if(selected!=null)
+                selected+=",a2";
+            else
+                selected="a2";
+            bill+=250;}
+        if(a3.isSelected()){
+            if(selected!=null)
+                selected+=",a3";
+            else
+                selected="a3";
+            bill+=250;}
+        if(a4.isSelected()){
+            if(selected!=null)
+                selected+=",a4";
+            else
+                selected="a4";
+            bill+=250;}
+        if(b1.isSelected()){
+            if(selected!=null)
+                selected+=",b1";
+            else
+                selected="b1";
+            bill+=200;}
+        if(b2.isSelected()){
+            if(selected!=null)
+                selected+=",b2";
+            else
+                selected="b2";
+            bill+=200;}
+        if(b3.isSelected()){
+            if(selected!=null)
+                selected+=",b3";
+            else
+                selected="b3";
+            bill+=200;}
+        if(b4.isSelected()){
+            if(selected!=null)
+                selected+=",b4";
+            else
+                selected="b4";
+            bill+=200;}
+        if(c1.isSelected()){
+            if(selected!=null)
+                selected+=",c1";
+            else
+                selected="c1";
+            bill+=150;}
+        if(c2.isSelected()){
+            if(selected!=null)
+                selected+=",c2";
+            else
+                selected="c2";
+            bill+=150;}
+        if(c3.isSelected()){
+            if(selected!=null)
+                selected+=",c3";
+            else
+                selected="c3";
+            bill+=150;}
+        if(c4.isSelected()){
+            if(selected!=null)
+                selected+=",c4";
+            else
+                selected="c4";
+            bill+=150;}
+        if(d1.isSelected()){
+            if(selected!=null)
+                selected+=",d1";
+            else
+                selected="d1";
+            bill+=150;}
+        if(d2.isSelected()){
+            if(selected!=null)
+                selected+=",d2";
+            else
+                selected="d2";
+            bill+=150;}
+        if(d3.isSelected()){
+            if(selected!=null)
+                selected+=",d3";
+            else
+                selected="d3";
+            bill+=150;}
+        if(d4.isSelected()){
+            if(selected!=null)
+                selected+=",d4";
+            else
+                selected="d4";
+            bill+=150;}
+        if(e1.isSelected()){
+            if(selected!=null)
+                selected+=",e1";
+            else
+                selected="e1";
+            bill+=100;}
+        if(e2.isSelected()){
+            if(selected!=null)
+                selected+=",e2";
+            else
+                selected="e2";
+            bill+=100;}
+        if(e3.isSelected()){
+            if(selected!=null)
+                selected+=",e3";
+            else
+                selected="e3";
+            bill+=100;}
+        if(e4.isSelected()){
+            if(selected!=null)
+                selected+=",e4";
+            else
+                selected="e4";
+            bill+=100;}
+        Payment pt = new Payment(bill,selected);
+        pt.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -906,142 +506,40 @@ public class seats extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new seats().setVisible(true);
+                try {
+                    new seats(bt.Movie_id,bt.Theatre_id,bt.Time,bt.Date).setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(seats.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(seats.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Checkbox checkbox1;
-    private java.awt.Checkbox checkbox10;
-    private java.awt.Checkbox checkbox100;
-    private java.awt.Checkbox checkbox101;
-    private java.awt.Checkbox checkbox102;
-    private java.awt.Checkbox checkbox103;
-    private java.awt.Checkbox checkbox104;
-    private java.awt.Checkbox checkbox105;
-    private java.awt.Checkbox checkbox106;
-    private java.awt.Checkbox checkbox107;
-    private java.awt.Checkbox checkbox108;
-    private java.awt.Checkbox checkbox109;
-    private java.awt.Checkbox checkbox11;
-    private java.awt.Checkbox checkbox110;
-    private java.awt.Checkbox checkbox111;
-    private java.awt.Checkbox checkbox112;
-    private java.awt.Checkbox checkbox113;
-    private java.awt.Checkbox checkbox114;
-    private java.awt.Checkbox checkbox115;
-    private java.awt.Checkbox checkbox116;
-    private java.awt.Checkbox checkbox117;
-    private java.awt.Checkbox checkbox118;
-    private java.awt.Checkbox checkbox119;
-    private java.awt.Checkbox checkbox12;
-    private java.awt.Checkbox checkbox120;
-    private java.awt.Checkbox checkbox121;
-    private java.awt.Checkbox checkbox122;
-    private java.awt.Checkbox checkbox123;
-    private java.awt.Checkbox checkbox124;
-    private java.awt.Checkbox checkbox125;
-    private java.awt.Checkbox checkbox126;
-    private java.awt.Checkbox checkbox127;
-    private java.awt.Checkbox checkbox128;
-    private java.awt.Checkbox checkbox129;
-    private java.awt.Checkbox checkbox13;
-    private java.awt.Checkbox checkbox130;
-    private java.awt.Checkbox checkbox14;
-    private java.awt.Checkbox checkbox15;
-    private java.awt.Checkbox checkbox16;
-    private java.awt.Checkbox checkbox17;
-    private java.awt.Checkbox checkbox18;
-    private java.awt.Checkbox checkbox19;
-    private java.awt.Checkbox checkbox2;
-    private java.awt.Checkbox checkbox20;
-    private java.awt.Checkbox checkbox21;
-    private java.awt.Checkbox checkbox22;
-    private java.awt.Checkbox checkbox23;
-    private java.awt.Checkbox checkbox24;
-    private java.awt.Checkbox checkbox25;
-    private java.awt.Checkbox checkbox26;
-    private java.awt.Checkbox checkbox27;
-    private java.awt.Checkbox checkbox28;
-    private java.awt.Checkbox checkbox29;
-    private java.awt.Checkbox checkbox3;
-    private java.awt.Checkbox checkbox30;
-    private java.awt.Checkbox checkbox31;
-    private java.awt.Checkbox checkbox32;
-    private java.awt.Checkbox checkbox33;
-    private java.awt.Checkbox checkbox34;
-    private java.awt.Checkbox checkbox35;
-    private java.awt.Checkbox checkbox36;
-    private java.awt.Checkbox checkbox37;
-    private java.awt.Checkbox checkbox38;
-    private java.awt.Checkbox checkbox39;
-    private java.awt.Checkbox checkbox4;
-    private java.awt.Checkbox checkbox40;
-    private java.awt.Checkbox checkbox41;
-    private java.awt.Checkbox checkbox42;
-    private java.awt.Checkbox checkbox43;
-    private java.awt.Checkbox checkbox44;
-    private java.awt.Checkbox checkbox45;
-    private java.awt.Checkbox checkbox46;
-    private java.awt.Checkbox checkbox47;
-    private java.awt.Checkbox checkbox48;
-    private java.awt.Checkbox checkbox49;
-    private java.awt.Checkbox checkbox5;
-    private java.awt.Checkbox checkbox50;
-    private java.awt.Checkbox checkbox51;
-    private java.awt.Checkbox checkbox52;
-    private java.awt.Checkbox checkbox53;
-    private java.awt.Checkbox checkbox54;
-    private java.awt.Checkbox checkbox55;
-    private java.awt.Checkbox checkbox56;
-    private java.awt.Checkbox checkbox57;
-    private java.awt.Checkbox checkbox58;
-    private java.awt.Checkbox checkbox59;
-    private java.awt.Checkbox checkbox6;
-    private java.awt.Checkbox checkbox60;
-    private java.awt.Checkbox checkbox61;
-    private java.awt.Checkbox checkbox62;
-    private java.awt.Checkbox checkbox63;
-    private java.awt.Checkbox checkbox64;
-    private java.awt.Checkbox checkbox65;
-    private java.awt.Checkbox checkbox66;
-    private java.awt.Checkbox checkbox67;
-    private java.awt.Checkbox checkbox68;
-    private java.awt.Checkbox checkbox69;
-    private java.awt.Checkbox checkbox7;
-    private java.awt.Checkbox checkbox70;
-    private java.awt.Checkbox checkbox71;
-    private java.awt.Checkbox checkbox72;
-    private java.awt.Checkbox checkbox73;
-    private java.awt.Checkbox checkbox74;
-    private java.awt.Checkbox checkbox75;
-    private java.awt.Checkbox checkbox76;
-    private java.awt.Checkbox checkbox77;
-    private java.awt.Checkbox checkbox78;
-    private java.awt.Checkbox checkbox79;
-    private java.awt.Checkbox checkbox8;
-    private java.awt.Checkbox checkbox80;
-    private java.awt.Checkbox checkbox81;
-    private java.awt.Checkbox checkbox82;
-    private java.awt.Checkbox checkbox83;
-    private java.awt.Checkbox checkbox84;
-    private java.awt.Checkbox checkbox85;
-    private java.awt.Checkbox checkbox86;
-    private java.awt.Checkbox checkbox87;
-    private java.awt.Checkbox checkbox88;
-    private java.awt.Checkbox checkbox89;
-    private java.awt.Checkbox checkbox9;
-    private java.awt.Checkbox checkbox90;
-    private java.awt.Checkbox checkbox91;
-    private java.awt.Checkbox checkbox92;
-    private java.awt.Checkbox checkbox93;
-    private java.awt.Checkbox checkbox94;
-    private java.awt.Checkbox checkbox95;
-    private java.awt.Checkbox checkbox96;
-    private java.awt.Checkbox checkbox97;
-    private java.awt.Checkbox checkbox98;
-    private java.awt.Checkbox checkbox99;
+    private javax.swing.JToggleButton a1;
+    private javax.swing.JToggleButton a2;
+    private javax.swing.JToggleButton a3;
+    private javax.swing.JToggleButton a4;
+    private javax.swing.JToggleButton b1;
+    private javax.swing.JToggleButton b2;
+    private javax.swing.JToggleButton b3;
+    private javax.swing.JToggleButton b4;
+    private javax.swing.JToggleButton c1;
+    private javax.swing.JToggleButton c2;
+    private javax.swing.JToggleButton c3;
+    private javax.swing.JToggleButton c4;
+    private javax.swing.JToggleButton d1;
+    private javax.swing.JToggleButton d2;
+    private javax.swing.JToggleButton d3;
+    private javax.swing.JToggleButton d4;
+    private javax.swing.JToggleButton e1;
+    private javax.swing.JToggleButton e2;
+    private javax.swing.JToggleButton e3;
+    private javax.swing.JToggleButton e4;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
