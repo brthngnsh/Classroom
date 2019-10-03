@@ -10,7 +10,7 @@ package online_movie_ticket_booking_system;
  * @author taskmaster
  */
 public class account {
-    String Email;
+    String Email = null;
     int Type;
     String Name;
     String Gender;

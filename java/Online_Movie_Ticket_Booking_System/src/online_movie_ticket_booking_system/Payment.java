@@ -7,8 +7,10 @@ package online_movie_ticket_booking_system;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,9 +28,12 @@ public class Payment extends javax.swing.JFrame {
      * Creates new form Payment
      */
     float bill_to_pay;
+    static DecimalFormat df = new DecimalFormat("0.00");
+    String seat = null;
     public Payment(float bill,String selected) {
         initComponents();
         bill_to_pay =  bill;
+        seat = selected;
         jLabel6.setText(String.valueOf(bill));
         jLabel7.setText(String.valueOf(Login.global_ac.wallet_amt));
     }
@@ -150,6 +155,7 @@ public class Payment extends javax.swing.JFrame {
             // TODO add your handling code here:
             String card = null;
             String cvv = null;
+            
             card = jTextField3.getText();
             if(card.length()!=16){
                 JOptionPane.showMessageDialog(this,"Invalid card number!Please try again!!!");}
@@ -160,7 +166,12 @@ public class Payment extends javax.swing.JFrame {
             Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/ssn","root","");
             Statement stmt = con.createStatement();
             Random rand = new Random();
-            String sql = "insert into bill values('"+Login.global_ac.Email+"','"+rand.nextInt(100000)+"',"+(Login.global_ac.wallet_amt+=(this.bill_to_pay*0.17))+"";
+            String sql = "insert into bill values('"+Login.global_ac.Email+"','"+rand.nextInt(100000)+"',"+String.valueOf(bill_to_pay)+","+String.valueOf((Login.global_ac.wallet_amt+=Math.round((((float)(this.bill_to_pay*0.17))*100)/100)))+",'"+seat+"','"+card+"','"+cvv+"')";
+            stmt.executeUpdate(sql);
+            sql = "update customer set wallet_amt="+String.valueOf(bill_to_pay)+","+String.valueOf((Login.global_ac.wallet_amt+=Math.round((((float)(this.bill_to_pay*0.17))*100)/100)))+" where email='"+Login.global_ac.Email+"'";
+            stmt.executeUpdate(sql);
+            String sql2 = "insert into booking values(";
+            
         } catch (SQLException ex) {
             Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
         }
