@@ -23,7 +23,7 @@ public class MyAccount extends javax.swing.JFrame {
      * Creates new form MyAccount
      * 
      */
-    
+    static history ht = null;
     public MyAccount() {
         initComponents();
         try {
@@ -264,7 +264,7 @@ public class MyAccount extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
             // TODO add your handling code here:
-            history ht = new history();
+            ht = new history();
             ht.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(MyAccount.class.getName()).log(Level.SEVERE, null, ex);

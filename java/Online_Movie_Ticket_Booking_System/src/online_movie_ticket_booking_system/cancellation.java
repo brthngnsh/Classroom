@@ -6,6 +6,18 @@
 
 package online_movie_ticket_booking_system;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author taskmaster
@@ -13,8 +25,15 @@ package online_movie_ticket_booking_system;
 public class cancellation extends javax.swing.JFrame {
 
     /** Creates new form cancellation */
-    public cancellation() {
-        initComponents();
+    public cancellation() throws SQLException {
+        try {
+            initComponents();
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/ssn","root","");
+            
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(cancellation.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /** This method is called from within the constructor to
@@ -26,21 +45,94 @@ public class cancellation extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("ENTER THE PAYMWNT ID TO BE CANCELLED");
+
+        jTextField1.setText("jTextField1");
+
+        jButton1.setText("CANCEL");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField1)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(123, 123, 123)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jButton1)
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            String SQL = "select * from bill";
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/ssn","root","");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(SQL);
+            String id = null;
+            String seating = null;
+            String input = jTextField1.getText();
+            int found = 0;
+            while(rs.next()){
+            id = rs.getString("payment_id");
+            if(Objects.equals(id, input))
+            {found = 1;
+            seating = rs.getString("seats");}
+            }
+            if(found == 0){
+            JOptionPane.showMessageDialog(this,"payment_id is incorrect");}
+            else{
+            SQL = "DELETE from bill where payment_id="+input;
+            stmt.executeUpdate(SQL);
+            SimpleDateFormat formatter = new SimpleDateFormat("dd");
+            SimpleDateFormat formatter2 = new SimpleDateFormat("MM");
+            SimpleDateFormat formatter3 = new SimpleDateFormat("YYYY");            
+            Date date = new Date();
+            String cur_date_month = formatter2.format(date);
+            int cur_date_day = Integer.parseInt(formatter.format(date));
+            String cur_date_year = formatter3.format(date);
+            String date_limit = (cur_date_year+"-"+(cur_date_month)+"-"+String.valueOf(cur_date_day));
+            SQL = "DELETE from booking where seats='"+seating+"' and date_of_booking>='"+date_limit+"'";
+            stmt.executeUpdate(SQL);
+            JOptionPane.showMessageDialog(this,"Ticket has been cancelled");
+            this.dispose();
+            MyAccount.ht.dispose();
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(cancellation.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -72,12 +164,19 @@ public class cancellation extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new cancellation().setVisible(true);
+                try {
+                    new cancellation().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(cancellation.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
 }
