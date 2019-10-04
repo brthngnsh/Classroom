@@ -129,6 +129,11 @@ public class MyAccount extends javax.swing.JFrame {
         jTextField5.setText("jTextField5");
 
         jButton5.setText("Payment History");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -250,8 +255,21 @@ public class MyAccount extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        Display.bt.setVisible(true);
+        if(Display.bt.isActive()){
+        Display.bt.setVisible(true);}
+        else{
+        menu mt = new menu();}
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        try {
+            // TODO add your handling code here:
+            history ht = new history();
+            ht.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(MyAccount.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -27,11 +27,13 @@ public class Payment extends javax.swing.JFrame {
     /**
      * Creates new form Payment
      */
+    String booking = null;
     float bill_to_pay;
     static DecimalFormat df = new DecimalFormat("0.00");
     String seat = null;
-    public Payment(float bill,String selected) {
+    public Payment(float bill,String selected,String selc) {
         initComponents();
+        booking = selc;
         bill_to_pay =  bill;
         seat = selected;
         jLabel6.setText(String.valueOf(bill));
@@ -168,9 +170,14 @@ public class Payment extends javax.swing.JFrame {
             Random rand = new Random();
             String sql = "insert into bill values('"+Login.global_ac.Email+"','"+rand.nextInt(100000)+"',"+String.valueOf(bill_to_pay)+","+String.valueOf((Login.global_ac.wallet_amt+=Math.round((((float)(this.bill_to_pay*0.17))*100)/100)))+",'"+seat+"','"+card+"','"+cvv+"')";
             stmt.executeUpdate(sql);
-            sql = "update customer set wallet_amt="+String.valueOf(bill_to_pay)+","+String.valueOf((Login.global_ac.wallet_amt+=Math.round((((float)(this.bill_to_pay*0.17))*100)/100)))+" where email='"+Login.global_ac.Email+"'";
+            sql = "update customer set wallet_amt="+String.valueOf((Login.global_ac.wallet_amt+=Math.round((((float)(this.bill_to_pay*0.17))*100)/100)))+" where email='"+Login.global_ac.Email+"'";
             stmt.executeUpdate(sql);
-            String sql2 = "insert into booking values(";
+            stmt.executeUpdate(booking);
+            JOptionPane.showMessageDialog(this, " Ticket has been booked ");
+            this.dispose();
+            MyAccount mt = new MyAccount();
+            mt.setVisible(true);
+            
             
         } catch (SQLException ex) {
             Logger.getLogger(Payment.class.getName()).log(Level.SEVERE, null, ex);
@@ -205,9 +212,10 @@ public class Payment extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Payment(st.bill,st.selected).setVisible(true);
+                new Payment(st.bill,st.selected,st.SQL).setVisible(true);
             }
         });
     }

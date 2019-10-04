@@ -210,9 +210,11 @@ public class Login extends javax.swing.JFrame {
                     
                     this.dispose();
                     
+                    
+                    
+                    global_ac = ac;
                     Display dp = new Display();
                     dp.setVisible(true);
-                    global_ac = ac;
                 }
                 else{
                     JOptionPane.showMessageDialog(this,"fail");

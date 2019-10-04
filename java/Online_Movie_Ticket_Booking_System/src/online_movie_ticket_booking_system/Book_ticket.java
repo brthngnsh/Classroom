@@ -35,6 +35,7 @@ public class Book_ticket extends javax.swing.JFrame {
     static String Theatre_id;
     static String Time;
     static String Date;
+    static String sql1122;
     public Book_ticket(String movie) {
         try {
             initComponents();

@@ -31,7 +31,7 @@ public class seats extends javax.swing.JFrame {
      * Creates new form seats
      */
     //following variables are obtained from Book Ticket bt class
-    
+    static String SQL;
     public seats(String M,String Th,String Ti,String D) throws ClassNotFoundException, SQLException {
         initComponents();
         Class.forName("com.mysql.cj.jdbc.Driver");
@@ -42,6 +42,7 @@ public class seats extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this,Ti);
         JOptionPane.showMessageDialog(this,D);
         String sql = "select * from booking where movie_id="+M+" and theatre_id="+Th+" and time='"+Ti+"' and date_of_booking='"+D+"'";
+        SQL = "insert into booking values("+M+","+Th+",'"+Ti+"','"+D+"'";
         ResultSet rs = stmt.executeQuery(sql);
         String seate;
         String[] seating = null;
@@ -472,7 +473,8 @@ public class seats extends javax.swing.JFrame {
             else
                 selected="e4";
             bill+=100;}
-        Payment pt = new Payment(bill,selected);
+        SQL += ",'"+selected+"')";
+        Payment pt = new Payment(bill,selected,SQL);
         pt.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
